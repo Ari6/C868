@@ -7,8 +7,8 @@ public class Inventory {
     private int itemId;
     private int departmentId;
     private int amount;
-    private LocalDate expire;
-    private LocalDate lastPurchase;
+    //private LocalDate expire;
+    //private LocalDate lastPurchase;
 
     public int getItemId() {
         return itemId;
@@ -33,7 +33,7 @@ public class Inventory {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
+    /*
     public LocalDate getExpire() {
         return expire;
     }
@@ -49,4 +49,5 @@ public class Inventory {
     public void setLastPurchase(LocalDate lastPurchase) {
         this.lastPurchase = lastPurchase;
     }
+    */
 }

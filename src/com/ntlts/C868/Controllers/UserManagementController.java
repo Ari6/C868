@@ -1,9 +1,6 @@
 package com.ntlts.C868.Controllers;
 
-import com.ntlts.C868.Models.Department;
-import com.ntlts.C868.Models.DepartmentDAO;
-import com.ntlts.C868.Models.User;
-import com.ntlts.C868.Models.UserDAO;
+import com.ntlts.C868.Models.*;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -33,6 +30,7 @@ public class UserManagementController implements Initializable {
     @FXML private TableColumn<User, String> userNameColumn;
     @FXML private TableColumn<User, Integer> departmentColumn;
     @FXML private TableColumn<User, Integer> adminColumn;
+    @FXML private TableColumn<User, LocalDateTime> lastUpdatedColumn;
     @FXML private Label userIdLabel;
     @FXML private TextField userNameText;
     @FXML private PasswordField password1;
@@ -56,6 +54,7 @@ public class UserManagementController implements Initializable {
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         departmentColumn.setCellValueFactory(new PropertyValueFactory<>("departmentId"));
         adminColumn.setCellValueFactory(new PropertyValueFactory<>("admin"));
+        lastUpdatedColumn.setCellValueFactory(new PropertyValueFactory<>("lastUpdated"));
 
         userTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<User>() {
             @Override
@@ -110,7 +109,8 @@ public class UserManagementController implements Initializable {
             UserDAO userDAO = new UserDAO();
             if(userDAO.getUser(userNameText.getText()) == null) {
                 user.setUsername(userNameText.getText());
-                user.setPassword(password1.getText());
+                user.setPassword(PasswordHash.getHashedPassword(password1.getText(), Salt.SALT));
+                //user.setPassword(password1.getText());
                 user.setDepartmentId(
                         departmentList.get(departmentChoice.getSelectionModel().getSelectedIndex()).getDepartmentId());
                 user.setAdmin(adminChoice.getSelectionModel().getSelectedItem());
@@ -135,7 +135,8 @@ public class UserManagementController implements Initializable {
                 if (userDAO.getUser(userTable.getSelectionModel().getSelectedItem().getUserId()) != null) {
                     user.setUserId(userTable.getSelectionModel().getSelectedItem().getUserId());
                     user.setUsername(userNameText.getText());
-                    user.setPassword(password1.getText());
+                    user.setPassword(PasswordHash.getHashedPassword(password1.getText(), Salt.SALT));
+                    //user.setPassword(password1.getText());
                     user.setDepartmentId(
                             departmentList.get(departmentChoice.getSelectionModel().getSelectedIndex()).getDepartmentId());
                     user.setAdmin(adminChoice.getSelectionModel().getSelectedItem());

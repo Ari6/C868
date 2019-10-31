@@ -85,7 +85,12 @@ public class InventoryManagementController implements Initializable {
     }
 
     public void clickSearchButton(ActionEvent event) {
-    set();
+        InventoryViewDAO inventoryViewDAO = new InventoryViewDAO();
+        ObservableList<InventoryView> inventoryList = inventoryViewDAO.getInventoryView(searchText.getText());
+        //Do not user set() here because it rewrites the search result
+        inventoryTable.setItems(inventoryList);
+        setItemChoice();
+        setDepartmentChoice();
     }
 
     public void clickBackButton(ActionEvent event) throws IOException {

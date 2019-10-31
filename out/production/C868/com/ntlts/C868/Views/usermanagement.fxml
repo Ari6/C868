@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ntlts.C868.Controllers.UserManagementController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ntlts.C868.Controllers.UserManagementController">
   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -24,65 +25,66 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="User Management" GridPane.columnIndex="1" GridPane.columnSpan="2">
+      <Label text="User Management" GridPane.columnIndex="2" GridPane.columnSpan="2">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="userTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="5">
+      <TableView fx:id="userTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="5">
         <columns>
           <TableColumn fx:id="userIdColumn" prefWidth="37.0" text="Id" />
-          <TableColumn fx:id="userNameColumn" prefWidth="72.0" text="User Name" />
-            <TableColumn fx:id="departmentColumn" prefWidth="73.0" text="Dept." />
-            <TableColumn fx:id="adminColumn" prefWidth="50.0" text="Admin" />
+          <TableColumn fx:id="userNameColumn" prefWidth="83.0" text="User Name" />
+            <TableColumn fx:id="departmentColumn" prefWidth="43.0" text="Dept." />
+            <TableColumn fx:id="adminColumn" prefWidth="56.0" text="Admin" />
+            <TableColumn fx:id="lastUpdatedColumn" prefWidth="130.0" text="Updated" />
         </columns>
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </TableView>
-      <Label text="UserID" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Label text="UserID" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Username" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <Label text="Username" GridPane.columnIndex="3" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Password" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <Label text="Password" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Admin" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <Label text="Admin" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Department" GridPane.columnIndex="2" GridPane.rowIndex="4">
+      <Label text="Department" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="userNameText" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <PasswordField fx:id="password1" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <TextField fx:id="userNameText" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <PasswordField fx:id="password1" GridPane.columnIndex="4" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets right="20.0" />
          </GridPane.margin>
       </PasswordField>
-      <PasswordField fx:id="password2" GridPane.columnIndex="4" GridPane.rowIndex="3">
+      <PasswordField fx:id="password2" GridPane.columnIndex="5" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="10.0" right="10.0" />
          </GridPane.margin>
       </PasswordField>
-      <ChoiceBox fx:id="departmentChoice" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <ChoiceBox fx:id="adminChoice" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      <Button fx:id="addButton" mnemonicParsing="false" onAction="#clickAddButton" text="Add" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button fx:id="updateButton" mnemonicParsing="false" onAction="#clickUpdateButton" text="Update" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#clickDeleteButton" text="Delete" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBackButton" text="Back" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
-      <Label fx:id="userIdLabel" prefHeight="17.0" prefWidth="116.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="351.0" textFill="RED" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="departmentChoice" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <ChoiceBox fx:id="adminChoice" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Button fx:id="addButton" mnemonicParsing="false" onAction="#clickAddButton" text="Add" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+      <Button fx:id="updateButton" mnemonicParsing="false" onAction="#clickUpdateButton" text="Update" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+      <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#clickDeleteButton" text="Delete" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#clickBackButton" text="Back" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+      <Label fx:id="userIdLabel" prefHeight="17.0" prefWidth="116.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="351.0" textFill="RED" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7" />
    </children>
 </GridPane>

@@ -72,6 +72,33 @@ public class InventoryViewDAO {
         }
         return inventoryViewList;
     }
+    public ObservableList<InventoryView> getInventoryView(String itemName) {
+        ResultSet rs = null;
+        ObservableList<InventoryView> inventoryViewList = FXCollections.observableArrayList();
+        String sql = "select inv.itemId itemid, i.categoryid catId, inv.departmentId departmentid, " +
+                "inv.amount amount, i.itemName itemname, c.categoryName categoryname, d.departmentName departmentname " +
+                "from inventories inv join items i on inv.itemId = i.itemId join categories c on i.categoryId = c.categoryId " +
+                "join departments d on inv.departmentId = d.departmentId where i.itemName like ?;";
+        try {
+            PreparedStatement state = connection.prepareStatement(sql);
+            String search = "%" + itemName + "%";
+            state.setString(1, search);
+            rs = state.executeQuery();
+            while(rs.next()) {
+                InventoryView inventoryView = new InventoryView();
+                inventoryView.setItemId(rs.getInt("itemid"));
+                inventoryView.setDepartmentId(rs.getInt("departmentid"));
+                inventoryView.setAmount(rs.getInt("amount"));
+                inventoryView.setItemName(rs.getString("itemname"));
+                inventoryView.setCategoryName(rs.getString("categoryname"));
+                inventoryView.setDepartmentName(rs.getString("departmentname"));
+                inventoryViewList.add(inventoryView);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return inventoryViewList;
+    }
     public ObservableList<InventoryView> getInventoryView() {
         ResultSet rs = null;
         ObservableList<InventoryView> inventoryViewList = FXCollections.observableArrayList();

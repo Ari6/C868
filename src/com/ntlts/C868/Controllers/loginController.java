@@ -1,6 +1,8 @@
 package com.ntlts.C868.Controllers;
 
 import com.ntlts.C868.Database;
+import com.ntlts.C868.Models.PasswordHash;
+import com.ntlts.C868.Models.Salt;
 import com.ntlts.C868.Models.User;
 import com.ntlts.C868.Models.UserDAO;
 import javafx.event.ActionEvent;
@@ -45,7 +47,8 @@ public class loginController implements Initializable {
             //User exists
             if (user != null) {
                 //Username and password matches
-                if (user.getPassword().equals(passwordText.getText())) {
+                //if (user.getPassword().equals(passwordText.getText())) {
+                if(user.getPassword().equals(PasswordHash.getHashedPassword(passwordText.getText(), Salt.SALT))){
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
                     Parent root = loader.load();
                     ModeSelectController modeselectCTL = loader.getController();

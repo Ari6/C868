@@ -19,6 +19,7 @@ public class DepartmentDAO {
 
         try{
             PreparedStatement state = connection.prepareStatement(sql);
+            state.setInt(1, departmentId);
             rs = state.executeQuery();
             rs.next();
             department.setDepartmentId(rs.getInt("departmentId"));

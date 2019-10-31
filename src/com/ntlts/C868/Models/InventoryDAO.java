@@ -75,7 +75,6 @@ public class InventoryDAO {
     }
 
     public ObservableList<Inventory> getInventory() {
-        Inventory inventory = new Inventory();
         String sql = "select * from inventories;";
         ResultSet rs = null;
         ObservableList<Inventory> inventoryList = FXCollections.observableArrayList();
@@ -83,6 +82,7 @@ public class InventoryDAO {
             PreparedStatement state = connection.prepareStatement(sql);
             rs = state.executeQuery();
             while (rs.next()) {
+                Inventory inventory = new Inventory();
                 inventory.setDepartmentId(rs.getInt("departmentId"));
                 inventory.setItemId(rs.getInt("itemId"));
                 inventory.setAmount(rs.getInt("amount"));
@@ -90,7 +90,7 @@ public class InventoryDAO {
                 //inventory.setExpire(ldt);
                 //ldt = LocalDate.ofEpochDay(rs.getLong("lastPurchase"));
                 //inventory.setLastPurchase(ldt);
-                //inventoryList.add(inventory);
+                inventoryList.add(inventory);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

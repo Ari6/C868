@@ -16,7 +16,7 @@ public class ItemDAO {
         String sql = "select * from items where itemId = ?;";
         try {
             PreparedStatement state = connection.prepareStatement(sql);
-            state.setInt(itemId, 1);
+            state.setInt(1, itemId);
             rs = state.executeQuery();
             rs.next();
             item.setItemId(rs.getInt("itemId"));
