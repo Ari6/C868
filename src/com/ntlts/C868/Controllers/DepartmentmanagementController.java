@@ -1,6 +1,5 @@
 package com.ntlts.C868.Controllers;
 
-import com.ntlts.C868.Models.CategoryDAO;
 import com.ntlts.C868.Models.Department;
 import com.ntlts.C868.Models.DepartmentDAO;
 import com.ntlts.C868.Models.User;
@@ -104,7 +103,7 @@ public class DepartmentmanagementController implements Initializable {
     }
 
     public void clickBackButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/modeselect.fxml"));
         Parent root = loader.load();
         ModeSelectController modeCTL = loader.getController();
         modeCTL.setAdmin(admin);

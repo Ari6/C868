@@ -13,7 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static com.ntlts.C868.Database.connection;
 
 public class ModeSelectController implements Initializable {
     @FXML private Button userManagementButton;
@@ -41,13 +44,14 @@ public class ModeSelectController implements Initializable {
         }
     }
     public void clickInventoryManagement(ActionEvent event) throws IOException {
-        System.out.println(admin);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/inventorymanagement.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/inventorymanagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/inventorymanagement.fxml"));
         Parent root = loader.load();
         InventoryManagementController inventoryCTL = loader.getController();
         inventoryCTL.setAdmin(admin);
         inventoryCTL.setUserId(userId);
         inventoryCTL.setDepartmentId(departmentId);
+        inventoryCTL.set();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Inventory Management");
@@ -58,7 +62,7 @@ public class ModeSelectController implements Initializable {
     }
 
     public void clickCategoryManagementButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/categorymanagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/categorymanagement.fxml"));
         Parent root = loader.load();
         CategoryManagementController categoryCTL = loader.getController();
         categoryCTL.setAdmin(admin);
@@ -74,7 +78,7 @@ public class ModeSelectController implements Initializable {
     }
 
     public void clickItemManagementButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/itemmanagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/itemmanagement.fxml"));
         Parent root = loader.load();
         ItemManagementController itemCTL = loader.getController();
         itemCTL.setAdmin(admin);
@@ -89,9 +93,10 @@ public class ModeSelectController implements Initializable {
         ((Stage) ((Node) (event.getSource())).getScene().getWindow()).close();
     }
 
-    public void clickLogoutButton(ActionEvent event) throws IOException {
+    public void clickLogoutButton(ActionEvent event) throws IOException, SQLException {
         this.user = null;
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/login.fxml"));
+        connection.close();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/ntlts/C868/Views/login.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setTitle("Inventory System Login");
@@ -102,7 +107,7 @@ public class ModeSelectController implements Initializable {
     }
 
     public void clickDepartmentManagementButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/departmentmanagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/departmentmanagement.fxml"));
         Parent root = loader.load();
         DepartmentmanagementController itemCTL = loader.getController();
         itemCTL.setAdmin(admin);
@@ -118,7 +123,7 @@ public class ModeSelectController implements Initializable {
     }
 
     public void clickUserManagementButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/usermanagement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/usermanagement.fxml"));
         Parent root = loader.load();
         UserManagementController userCTL = loader.getController();
         userCTL.setAdmin(admin);

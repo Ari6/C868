@@ -1,4 +1,4 @@
-package com.ntlts.C868.Test;
+package Test;
 
 import static com.ntlts.C868.Database.connection;
 import static org.junit.Assert.*;

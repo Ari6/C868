@@ -88,13 +88,24 @@ public class InventoryManagementController implements Initializable {
         InventoryViewDAO inventoryViewDAO = new InventoryViewDAO();
         ObservableList<InventoryView> inventoryList = inventoryViewDAO.getInventoryView(searchText.getText());
         //Do not user set() here because it rewrites the search result
-        inventoryTable.setItems(inventoryList);
+        if (admin == 0) {
+            ObservableList<InventoryView> inventoryListFiltered = FXCollections.observableArrayList();
+            for (InventoryView i : inventoryList) {
+                if (i.getDepartmentId() == departmentId) {
+                    inventoryListFiltered.add(i);
+                }
+            }
+            inventoryTable.setItems(inventoryListFiltered);
+        } else {
+            inventoryTable.setItems(inventoryList);
+        }
         setItemChoice();
         setDepartmentChoice();
     }
 
     public void clickBackButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/modeselect.fxml"));
         Parent root = loader.load();
         ModeSelectController modeController = loader.getController();
         modeController.setUserId(userId);
@@ -178,7 +189,7 @@ public class InventoryManagementController implements Initializable {
         }
         set();
     }
-    private void set() {
+    public void set() {
         setInventoryTable();
         setItemChoice();
         setDepartmentChoice();
@@ -186,8 +197,13 @@ public class InventoryManagementController implements Initializable {
 
     private void setInventoryTable(){
         InventoryViewDAO inventoryViewDAO = new InventoryViewDAO();
-        inventoryList = inventoryViewDAO.getInventoryView();
-        inventoryTable.setItems(inventoryList);
+        if(admin == 1) {
+            inventoryList = inventoryViewDAO.getInventoryView();
+            inventoryTable.setItems(inventoryList);
+        } else {
+            inventoryList = inventoryViewDAO.getInventoryView(departmentId);
+            inventoryTable.setItems(inventoryList);
+        }
     }
     private void setItemChoice() {
         ItemDAO itemDAO = new ItemDAO();

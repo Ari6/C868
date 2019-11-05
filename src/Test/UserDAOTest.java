@@ -1,4 +1,4 @@
-package com.ntlts.C868.Test;
+package Test;
 
 import com.ntlts.C868.Database;
 import com.ntlts.C868.Models.User;

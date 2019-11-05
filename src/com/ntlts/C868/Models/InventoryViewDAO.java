@@ -10,17 +10,6 @@ import java.sql.SQLException;
 import static com.ntlts.C868.Database.connection;
 
 public class InventoryViewDAO {
-    /*
-        private int inventoryId;
-    private int itemId;
-    private int categoryId;
-    private int departmentId;
-
-    private String amount;
-    private String itemName;
-    private String categoryName;
-    private String departmentName;
-     */
     public InventoryView getInventoryView(int itemId, int departmentId) {
         ResultSet rs = null;
         InventoryView inventoryView = new InventoryView();

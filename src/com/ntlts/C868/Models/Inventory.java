@@ -1,8 +1,5 @@
 package com.ntlts.C868.Models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public class Inventory {
     private int itemId;
     private int departmentId;

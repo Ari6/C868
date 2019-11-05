@@ -49,7 +49,8 @@ public class loginController implements Initializable {
                 //Username and password matches
                 //if (user.getPassword().equals(passwordText.getText())) {
                 if(user.getPassword().equals(PasswordHash.getHashedPassword(passwordText.getText(), Salt.SALT))){
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+                    //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/modeselect.fxml"));
                     Parent root = loader.load();
                     ModeSelectController modeselectCTL = loader.getController();
                     modeselectCTL.setUser(user);

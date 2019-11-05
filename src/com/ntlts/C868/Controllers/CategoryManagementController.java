@@ -5,7 +5,6 @@ import com.ntlts.C868.Models.CategoryDAO;
 import com.ntlts.C868.Models.User;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,16 +14,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import static com.ntlts.C868.Database.connection;
 
 public class CategoryManagementController implements Initializable {
     private User user;
@@ -102,7 +96,7 @@ public class CategoryManagementController implements Initializable {
     }
 
     public void clickBackButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/modeselect.fxml"));
         Parent root = loader.load();
         ModeSelectController modeCTL = loader.getController();
         modeCTL.setAdmin(admin);

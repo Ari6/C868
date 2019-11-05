@@ -1,7 +1,6 @@
 package com.ntlts.C868.Controllers;
 
 import com.ntlts.C868.Models.*;
-import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -99,6 +98,26 @@ public class UserManagementController implements Initializable {
             errorLabel.setText("Please remove any space or special character from username.");
             return 4;
         }
+        //username must be 4 to 8 characters.
+        if(!userNameText.getText().matches("[0-9a-zA-Z]{4,8}")) {
+            errorLabel.setText("Username must be between 4 to 8 characters.");
+            return 5;
+        }
+        //password must be 4 to 10 characters.
+        if(password1.getText().length() < 4 || password1.getText().length() > 10) {
+            errorLabel.setText("Password must be between 4 to 10 characters.");
+            return 6;
+        }
+        //department must be selected
+        if(departmentChoice.getSelectionModel().getSelectedItem() == null) {
+            errorLabel.setText("Department must be selected.");
+            return 7;
+        }
+        //admin must be selected
+        if(adminChoice.getSelectionModel().getSelectedItem() == null) {
+            errorLabel.setText("Admin must be selected.");
+            return 8;
+        }
         return 0;
     }
 
@@ -172,7 +191,8 @@ public class UserManagementController implements Initializable {
     }
 
     public void clickBackButton(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/modeselect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ntlts/C868/Views/modeselect.fxml"));
         Parent root = loader.load();
         ModeSelectController modeController = loader.getController();
         modeController.setUserId(userId);
