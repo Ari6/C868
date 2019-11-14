@@ -7,12 +7,13 @@ The hashed password is stored on the database.
 Only administrator account can manage users.
 
 ## Technical Overview
-* Using SQLite
+* Using SQLite(JDBC)
 * Using OpenSDK11
 * OpenJavaFX11
 * Gradle
 * Created minimum JRE for the application(jlink)
 * Password hashing
+* Junit
 
 # Notes
-* Making OpenJavaFX11 run any computer was a little tough work. If it is possible to use Java8, it is way easier. Since Java11 does not include JavaFX.
+* Making OpenJavaFX11 apps be able to run any computer was a little tough work. If it is possible to use Java8, it is easier. Since Java11 does not include JavaFX.
